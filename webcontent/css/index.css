@@ -32,9 +32,10 @@ h22 {
 
 .quickcontent {
     width: 35%;
-    text-align: left;
+    text-align: center;
     float: left;
-    padding-left: 7%;
+    padding-left: 6.9%;
+    padding-top: 5px;
 }
 
 .quickvideo {
@@ -292,9 +293,9 @@ img {
     -webkit-transform-origin: 151.141px 138px 0px;
     -moz-transform-origin: 151.141px 138px 0px;
     left: 75%;
-    padding-top:3%;
+    padding-top:5px;
     width: 288px;
-    height: 234px;
+    height: 226px;
 }
 
 .getstartbutton {
@@ -348,8 +349,8 @@ img {
 
 @media only screen and (min-width: 900px) and (max-width: 1200px) {
     .min {
-        width: 230px;
-        height: 210px;
+        width: 232px;
+        height: 190px;
     }
 
     .introvideo {
