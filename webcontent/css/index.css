@@ -31,10 +31,10 @@ h22 {
 }
 
 .quickcontent {
-    width: 32%;
+    width: 35%;
     text-align: left;
     float: left;
-    padding-left: 10%;
+    padding-left: 7%;
 }
 
 .quickvideo {
@@ -291,9 +291,10 @@ img {
     transform-origin: 151.141px 138px 0px;
     -webkit-transform-origin: 151.141px 138px 0px;
     -moz-transform-origin: 151.141px 138px 0px;
-    left: 70%;
-    width: 303px;
-    height: 267px;
+    left: 75%;
+    padding-top:3%;
+    width: 288px;
+    height: 234px;
 }
 
 .getstartbutton {
@@ -347,8 +348,8 @@ img {
 
 @media only screen and (min-width: 900px) and (max-width: 1200px) {
     .min {
-        width: 250px;
-        height: 230px;
+        width: 230px;
+        height: 210px;
     }
 
     .introvideo {
@@ -437,7 +438,7 @@ img {
 
 @media only screen and (min-width: 820px) and (max-width: 900px) {
     .min {
-        width: 223px;
+        width: 208px;
         height: 180px;
     }
 
