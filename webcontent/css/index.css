@@ -218,7 +218,7 @@ img {
     background-color: rgb(237, 243, 250);
     top: 2040px;
     height: auto;
-    padding-bottom:480px;
+    padding-bottom:530px;
     width:94%; padding-left:6%; float:left;
 }
 .customers-table {
@@ -260,8 +260,11 @@ img {
 .customer-logos-bar2 {
     padding-left:6.5%;
     border:3 double #a9c9e2; 
-    margin-bottom:10px;
+    margin-top:150px;
     float:left;
+}
+.footertop {
+    margin-top:190px;
 }
 .customer-logos-back-front {
     margin-top:50px;
@@ -291,6 +294,7 @@ img {
     width:200px; 
     height:120px;
     border:1px solid #a9c9e2;
+    cursor: pointer;
 }
 .span-style{
     display:inline-block;
@@ -307,7 +311,7 @@ span:hover{
     background-color:#834524; }
 
 .footerback {
-    top: 2180px;
+    top: 2620px;
     height: auto;
 }
 
@@ -392,6 +396,17 @@ span:hover{
     width: 215px;
     height: 43px;
     font-size: 150%;
+}
+
+.morestoriesbutton {
+    background-color: rgb(52, 79, 105);
+    z-index: 5555;
+    left: 42%;
+    width: 215px;
+    height: 43px;
+    font-size: 120%;
+    margin-top: 40px;
+    margin-bottom: 40px;
 }
 
 .joinusbutton {
@@ -522,8 +537,32 @@ span:hover{
     }
 
     .footerback {
-        top: 2100px;
+        top: 2570px;
         height: auto;
+    }
+    .logo-back2 {
+        float:left;
+    }
+    .logo-back1 {
+        float:left;
+    }
+    .customer-logos-back-front {
+        margin-top:30px;
+        height:270px;
+        padding-left:4%;
+        padding-right:4%;
+        width:86%;
+        display: inline-block;
+    }
+    .customer-logos-bar1 {
+        margin-top:30px;
+        margin-bottom:30px;
+    }
+    .customer-logos-bar2 {
+        margin-top:240px;
+    }
+    .footertop {
+        margin-top:250px;
     }
 }
 
@@ -599,15 +638,21 @@ span:hover{
 
     .userback {
         top: 1950px;
-        padding-bottom:490px;
+        padding-bottom:590px;
     }
 
     .footerback {
-        top: 2100px;
+        top: 2640px;
         height: auto;
     }
     .logos-background {
         width:180px;
+    }
+    .logo-back2 {
+        float:left;
+    }
+    .logo-back1 {
+        float:left;
     }
     .cl1-default {
         justify-content: center;
@@ -615,6 +660,24 @@ span:hover{
         align-items: center;
         width:180px;
     }
+    .customer-logos-back-front {
+        margin-top:30px;
+        height:270px;
+        padding-left:4%;
+        padding-right:4%;
+        width:86%;
+        display: inline-block;
+    }
+    .customer-logos-bar1 {
+        margin-top:30px;
+        margin-bottom:30px;
+    }
+    .customer-logos-bar2 {
+        margin-top:240px;
+    }
+    .footertop {
+        margin-top:250px;
+    }  
 }
 
 @media only screen and (min-width: 600px) and (max-width: 820px) {
@@ -765,18 +828,23 @@ span:hover{
     .quickstartback {
         top: 1050px;
     }
-
+    .logo-back2 {
+        float:left;
+    }
+    .logo-back1 {
+        float:left;
+    }
     .usecaseback {
         top: 1420px;
     }
 
     .userback {
         top: 1840px;
-        padding-bottom:480px;
+        padding-bottom:560px;
     }
 
     .footerback {
-        top: 1950px;
+        top: 2500px;
         height: auto;
     }
     .customers-table {
@@ -785,18 +853,39 @@ span:hover{
         width:94%;
     }
     .logos-background {
-        width:155px;
+        width:180px;
+    }
+    .customer-logos-bar1 {
+        padding-left:6%;
+        margin-top:150px;
+        margin-bottom:10px;
+        float:left;
+    }
+    .customer-logos-bar2 {
+        margin-top: 600px;
+        margin-bottom:40px;
     }
     .cl1-default {
         justify-content: center;
         display: flex;
         align-items: center;
-        width:155px;
+        width:180px;
     }
     .customer-logos-wrapper {
         line-height:24px;
         font-size:0.9em;
 
+    }
+    .customer-logos-back-front {
+        margin-top:30px;
+        height:270px;
+        padding-left:4%;
+        padding-right:4%;
+        width:86%;
+        display: inline-block;
+    }
+    .footertop {
+        margin-top:380px;
     }
 }
 @media only screen and (min-width: 430px) and (max-width: 600px) {
@@ -951,10 +1040,10 @@ span:hover{
 
     .userback {
         top: 1840px;
-        padding-bottom:420px;
+        padding-bottom:510px;
     }
     .footerback {
-        top:1980px; 
+        top:2630px; 
     }
     .logos-background {
         width:155px;
@@ -975,9 +1064,12 @@ span:hover{
     }
     .customer-logos-bar1 {
         padding-left:6%;
-        margin-top:40px;
-        margin-bottom:40px;
+        margin-top:120px;
+        margin-bottom:20px;
         float:left;
+    }
+    .customer-logos-bar2 {
+        margin-bottom:-120px;
     }
     .customers-table {
         margin-top:30px;
@@ -1003,7 +1095,7 @@ span:hover{
         float:left;
     }
     .logo-back1 {
-        float:right;
+        float:left;
     }
     .customer-logos-wrapper {
         line-height:24px;
@@ -1158,10 +1250,10 @@ span:hover{
         top: 2200px;
         width:94%; 
         float:left;
-        padding-bottom:400px;
+        padding-bottom:470px;
     }
     .footerback {
-        top: 2330px;
+        top: 3010px;
         height: auto;
     }
     .customer-logos-back-front {
@@ -1172,9 +1264,12 @@ span:hover{
     }
     .customer-logos-bar1 {
         padding-left:6%;
-        margin-top:40px;
-        margin-bottom:40px;
+        margin-top:120px;
+        margin-bottom:20px;
         float:left;
+    }
+    .customer-logos-bar2 {
+        margin-top:350px;
     }
     .customers-table {
         margin-top:30px;
@@ -1200,7 +1295,7 @@ span:hover{
         float:left;
     }
     .logo-back1 {
-        float:right;
+        float:left;
     }
     .customer-logos-wrapper {
         line-height:24px;
