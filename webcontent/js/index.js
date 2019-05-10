@@ -10,6 +10,8 @@
   var intro4 = document.getElementById('client4_intro');
   var cli5 = document.getElementById('client5');
   var intro5 = document.getElementById('client5_intro');
+  var cli6 = document.getElementById('client6');
+  var intro6 = document.getElementById('client6_intro');
   var show = document.getElementById('show');
   var timer = null;
   intro1.onmouseover = cli1.onmouseover = function(){
@@ -24,11 +26,14 @@
       cli4.style.opacity = '1';
       cli4.style.filter = 'alpha(opacity=100)';
       cli5.style.opacity = '1';
-      cli5.style.filter = 'alpha(opacity=100)';     
+      cli5.style.filter = 'alpha(opacity=100)';    
+      cli6.style.opacity = '1';
+      cli6.style.filter = 'alpha(opacity=100)'; 
       intro2.style.display = 'none';
       intro3.style.display = 'none';
       intro4.style.display = 'none';
       intro5.style.display = 'none';
+      intro6.style.display = 'none';
       show.style.display = 'none';
   }
   intro1.onmouseout = cli1.onmouseout = function(){
@@ -40,6 +45,7 @@
       intro3.style.display = 'none';
       intro4.style.display = 'none';
       intro5.style.display = 'none';
+      intro6.style.display = 'none';
       cli1.style.opacity = '0.4';
       cli1.style.filter = 'alpha(opacity=40)';
       show.style.display = 'block';
@@ -53,6 +59,7 @@
       intro4.style.display = 'none';
       intro3.style.display = 'none';
       intro5.style.display = 'none';
+      intro6.style.display = 'none';
       cl1.style = 'none';
       cli1.style.opacity = '1';
       cli1.style.filter = 'alpha(opacity=100)';
@@ -64,6 +71,8 @@
       cli4.style.filter = 'alpha(opacity=100)';
       cli5.style.opacity = '1';
       cli5.style.filter = 'alpha(opacity=100)';
+      cli6.style.opacity = '1';
+      cli6.style.filter = 'alpha(opacity=100)';
       show.style.display = 'none';
   }
   intro2.onmouseout = cli2.onmouseout = function(){
@@ -77,6 +86,7 @@
       intro3.style.display = 'none';
       intro4.style.display = 'none';
       intro5.style.display = 'none';
+      intro6.style.display = 'none';
       show.style.display = 'block';
     },400);
 
@@ -88,6 +98,7 @@
       intro3.style.display = 'block';
       intro4.style.display = 'none';
       intro5.style.display = 'none';
+      intro6.style.display = 'none';
       cl1.style = 'none';
       cli1.style.opacity = '1';
       cli1.style.filter = 'alpha(opacity=100)';
@@ -99,6 +110,8 @@
       cli3.style.filter = 'alpha(opacity=40)';
       cli5.style.opacity = '1';
       cli5.style.filter = 'alpha(opacity=100)';
+      cli6.style.opacity = '1';
+      cli6.style.filter = 'alpha(opacity=100)';
       show.style.display = 'none';
   }
   intro3.onmouseout = cli3.onmouseout = function(){
@@ -112,6 +125,7 @@
       intro3.style.display = 'none';
       intro4.style.display = 'none';
       intro5.style.display = 'none';
+      intro6.style.display = 'none';
       show.style.display = 'block';
     },400);
 
@@ -123,6 +137,7 @@
       intro3.style.display = 'none';
       intro4.style.display = 'block';
       intro5.style.display = 'none';
+      intro6.style.display = 'none';
       cl1.style = 'none';
       cli1.style.opacity = '1';
       cli1.style.filter = 'alpha(opacity=100)';
@@ -134,6 +149,8 @@
       cli4.style.filter = 'alpha(opacity=40)';
       cli5.style.opacity = '1';
       cli5.style.filter = 'alpha(opacity=100)';
+      cli6.style.opacity = '1';
+      cli6.style.filter = 'alpha(opacity=100)';
       show.style.display = 'none';
   }
   intro4.onmouseout = cli4.onmouseout = function(){
@@ -147,6 +164,7 @@
       intro3.style.display = 'none';
       intro4.style.display = 'none';
       intro5.style.display = 'none';
+      intro6.style.display = 'none';
       show.style.display = 'block';
     },400);
 
@@ -158,6 +176,7 @@
       intro3.style.display = 'none';
       intro4.style.display = 'none';
       intro5.style.display = 'block';
+      intro6.style.display = 'none';
       cl1.style = 'none';
       cli1.style.opacity = '1';
       cli1.style.filter = 'alpha(opacity=100)';
@@ -169,6 +188,8 @@
       cli4.style.filter = 'alpha(opacity=100)';
       cli5.style.opacity = '0.4';
       cli5.style.filter = 'alpha(opacity=40)';
+      cli6.style.opacity = '1';
+      cli6.style.filter = 'alpha(opacity=100)';
       show.style.display = 'none';
   }
   intro5.onmouseout = cli5.onmouseout = function(){
@@ -182,6 +203,46 @@
       intro3.style.display = 'none';
       intro4.style.display = 'none';
       intro5.style.display = 'none';
+      intro6.style.display = 'none';
+      show.style.display = 'block';
+    },400);
+
+  }
+  intro6.onmouseover = cli6.onmouseover = function(){
+    if(timer) clearTimeout(timer)
+      intro1.style.display = 'none';
+      intro2.style.display = 'none';
+      intro3.style.display = 'none';
+      intro4.style.display = 'none';
+      intro5.style.display = 'none';
+      intro6.style.display = 'block';
+      cl1.style = 'none';
+      cli1.style.opacity = '1';
+      cli1.style.filter = 'alpha(opacity=100)';
+      cli2.style.opacity = '1';
+      cli2.style.filter = 'alpha(opacity=100)';
+      cli3.style.opacity = '1';
+      cli3.style.filter = 'alpha(opacity=100)';
+      cli4.style.opacity = '1';
+      cli4.style.filter = 'alpha(opacity=100)';
+      cli5.style.opacity = '1';
+      cli5.style.filter = 'alpha(opacity=100)';
+      cli6.style.opacity = '0.4';
+      cli6.style.filter = 'alpha(opacity=40)';
+      show.style.display = 'none';
+  }
+  intro6.onmouseout = cli6.onmouseout = function(){
+    timer = setTimeout(function(){
+      cli6.style.opacity = '1';
+      cli6.style.filter = 'alpha(opacity=100)';
+      cli1.style.opacity = '0.4';
+      cli1.style.filter = 'alpha(opacity=40)';
+      intro1.style.display = 'none';
+      intro2.style.display = 'none';
+      intro3.style.display = 'none';
+      intro4.style.display = 'none';
+      intro5.style.display = 'none';
+      intro6.style.display = 'none';
       show.style.display = 'block';
     },400);
 
