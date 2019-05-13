@@ -260,11 +260,11 @@ img {
 .customer-logos-bar2 {
     padding-left:6.5%;
     border:3 double #a9c9e2; 
-    margin-top:150px;
+    margin-top:200px;
     float:left;
 }
 .footertop {
-    margin-top:210px;
+    margin-top:240px;
 }
 .customer-logos-back-front {
     margin-top:50px;
@@ -559,10 +559,10 @@ span:hover{
         margin-bottom:30px;
     }
     .customer-logos-bar2 {
-        margin-top:240px;
+        margin-top:340px;
     }
     .footertop {
-        margin-top:250px;
+        margin-top:300px;
     }
 }
 
@@ -673,10 +673,10 @@ span:hover{
         margin-bottom:30px;
     }
     .customer-logos-bar2 {
-        margin-top:240px;
+        margin-top:280px;
     }
     .footertop {
-        margin-top:250px;
+        margin-top:285px;
     }  
 }
 
@@ -885,7 +885,7 @@ span:hover{
         display: inline-block;
     }
     .footertop {
-        margin-top:380px;
+        margin-top:370px;
     }
 }
 @media only screen and (min-width: 430px) and (max-width: 600px) {
@@ -1259,7 +1259,7 @@ span:hover{
     .customer-logos-back-front {
         margin-top:30px;
         height:270px;
-        width:94%;
+        width:98%;
         display: inline-block;
     }
     .customer-logos-bar1 {
