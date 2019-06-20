@@ -135,7 +135,7 @@ chmod +x /tmp/go-xcat
             <p>Regardless of the option that is chosen to install xCAT, <b>BOTH</b> <tt>xcat-core</tt> and <tt>xcat-dep</tt> are needed before starting the install.</p><b><a href="#xcat-core">xCAT Core Packages (xcat-core)</a></b> is the main package containing the xCAT software. The following builds are available:
 
             <ul>
-                <li><a href="#release_builds">Release Builds (Stable)</a> - latest generally available (GA) build for xCAT</li>
+                <li><a href="#release_builds">Release Build (Stable)</a> - latest generally available (GA) build for xCAT</li>
 
                 <li><a href="#development_builds">Development Builds</a> - snapshot builds of the next version of xCAT</li>
 
@@ -221,6 +221,9 @@ chmod +x /tmp/go-xcat
         <div class="download_section">
             <h2><a name="xcat-dep">xCAT Dependency Packages (xcat-dep)</a></h2>
 
+            <p> This contains dependency packages required by xCAT that are not provided by the operating system.</p>
+
+
             <div class="download_files">
                 <h4>Linux - RPM</h4>
 
@@ -240,12 +243,11 @@ chmod +x /tmp/go-xcat
 
                         <div id="code_box">
                             <pre class="codetext">&nbsp; deb [arch=amd64] https://xcat.org/files/xcat/repos/apt/xcat-dep trusty main</pre>
-                        &nbsp; <i>For ppc64el servers:</i>
                         </div>
 
                         &nbsp; <i>For ppc64el servers:</i>
                         <div id="code_box">
-                            <p class="codetext">&nbsp; deb [arch=ppc64el] https://xcat.org/files/xcat/repos/apt/xcat-dep trusty main</pre>
+                            <pre class="codetext">&nbsp; deb [arch=ppc64el] https://xcat.org/files/xcat/repos/apt/xcat-dep trusty main</pre>
                         </div>
                     </li>
                 </ul>
