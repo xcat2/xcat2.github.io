@@ -12,6 +12,8 @@
   var intro5 = document.getElementById('client5_intro');
   var cli6 = document.getElementById('client6');
   var intro6 = document.getElementById('client6_intro');
+  var cli7 = document.getElementById('client7');
+  var intro7 = document.getElementById('client7_intro');
   var show = document.getElementById('show');
   var timer = null;
   intro1.onmouseover = cli1.onmouseover = function(){
