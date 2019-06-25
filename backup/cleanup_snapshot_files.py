@@ -12,7 +12,7 @@ import time
 DAYS_OLD=180
 
 baseDirectory = os.path.dirname(os.path.realpath(__file__))
-fileDirectory = baseDirectory.replace("backup", "files")
+fileDirectory = baseDirectory.replace("backup", "files/xcat")
 
 now = time.time()
 cutoff = now - (int(DAYS_OLD) * 86400)
@@ -75,7 +75,9 @@ for root,dirnames,filenames in os.walk(fileDirectory):
                     # but it is the last snapshot of its kind
                     print "    ---> KEEP, LAST OF ITS KIND %s" %(filename)
                 else:
-                    #    os.remove(fullpath)
                     print "    ---> REMOVE %s" %(filename)
+                    os.remove(fullpath)
             else:
                 print "    ---> KEEP, NOT OLD ENOUGH %s" %(filename)
+
+print "Removed %d files" %(REMOVED)
