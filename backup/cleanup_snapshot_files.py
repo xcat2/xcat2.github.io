@@ -19,6 +19,7 @@ cutoff = now - (int(DAYS_OLD) * 86400)
 
 # Get all the bz2 files 
 for root,dirnames,filenames in os.walk(fileDirectory): 
+    print "Working on directory %s with %s files" %(root, len(filenames)) 
     if not filenames:
         continue
 
@@ -27,6 +28,8 @@ for root,dirnames,filenames in os.walk(fileDirectory):
         # there are more than 2 files in the directory
 
         symlinks = [] 
+        fresh_time = 0
+        fresh_file = "mg"
         for filename in fnmatch.filter(filenames, "*snap.tar.bz2"):
             fullpath = os.path.join(root,filename)
             # look for the symlinks
@@ -36,6 +39,20 @@ for root,dirnames,filenames in os.walk(fileDirectory):
                 # find the real file name and set them aside 
                 symlinks.append(real_full_path)
   
+        # Repeat the loop and look for files with freshest date
+        # We want to not remove such file as it might be the last one in dir
+        # even if older than the DAYS_OLD
+        for filename in fnmatch.filter(filenames, "*.bz2"):
+            fullpath = os.path.join(root,filename)
+            t = os.stat(fullpath)
+            c = t.st_mtime
+            if fresh_time < c:
+                #This file has later timestamp
+                fresh_time = c
+                fresh_file = fullpath
+                # print "    FRESHEST - File %-50s, f=%d" %(filename, fresh_time)
+
+
         # Repeat the loop and actually remove the files older than DAYS_OLD 
         for filename in fnmatch.filter(filenames, "*.bz2"):
             fullpath = os.path.join(root,filename)
@@ -52,4 +69,13 @@ for root,dirnames,filenames in os.walk(fileDirectory):
 
             # print "DEBUG - File %s, c=%d,cutoff=%d" %(os.path.basename(fullpath), c, cutoff)
             if c < cutoff: 
-                os.remove(fullpath)
+                # Timestamp on the file is older than the cutoff
+                if fullpath == fresh_file:
+                    # Do not remove the last file in directory. It might be older than cutoff
+                    # but it is the last snapshot of its kind
+                    print "    ---> KEEP, LAST OF ITS KIND %s" %(filename)
+                else:
+                    #    os.remove(fullpath)
+                    print "    ---> REMOVE %s" %(filename)
+            else:
+                print "    ---> KEEP, NOT OLD ENOUGH %s" %(filename)
