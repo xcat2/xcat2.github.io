@@ -4,10 +4,7 @@ SCRIPT=$(readlink -f $0)
 TARGET_DIR=/home/xcat
 TARGET=xcat@xcat.org
 
-D2=$(dirname ${SCRIPT})
-D3=$(dirname ${D2})
-D4=$(dirname ${D3})
-BACKUP_DIRECTORY="${D4}/xcat2.github.io_backup"
+BACKUP_DIRECTORY="/xcat/build/xcat.org_backup"
 
 LOGFILE=${BACKUP_DIRECTORY}/status.out
 
