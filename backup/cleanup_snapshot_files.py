@@ -1,8 +1,8 @@
 #!/usr/bin/python 
-# Run this by adding to the crontab
-# - execute every day at 1:00 AM, deleting files older than 180 days
 #
-# 1 00 * * * xcat /var/www/xcat.org/backup/cleanup_snapshot_files.sh
+# This script could be executed directly on xcat.org
+# But it is intended to be executed from c910 login node
+# by backup/runcleanup (in xcat2/xcat2.github.io repo)
 #
 
 import sys, os
@@ -10,16 +10,16 @@ import fnmatch
 import time
 
 DAYS_OLD=180
+REMOVED=0
 
-baseDirectory = os.path.dirname(os.path.realpath(__file__))
-fileDirectory = baseDirectory.replace("backup", "files/xcat")
+fileDirectory = "/var/www/xcat.org/files/xcat"
 
 now = time.time()
 cutoff = now - (int(DAYS_OLD) * 86400)
 
 # Get all the bz2 files 
 for root,dirnames,filenames in os.walk(fileDirectory): 
-    print "Working on directory %s with %s files" %(root, len(filenames)) 
+    print "Processing directory %s with %s files" %(root, len(filenames)) 
     if not filenames:
         continue
 
@@ -76,6 +76,7 @@ for root,dirnames,filenames in os.walk(fileDirectory):
                     print "    ---> KEEP, LAST OF ITS KIND %s" %(filename)
                 else:
                     print "    ---> REMOVE %s" %(filename)
+                    REMOVED += 1
                     os.remove(fullpath)
             else:
                 print "    ---> KEEP, NOT OLD ENOUGH %s" %(filename)
