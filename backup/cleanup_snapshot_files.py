@@ -1,8 +1,8 @@
 #!/usr/bin/python 
-# Run this by adding to the crontab
-# - execute every day at 1:00 AM, deleting files older than 180 days
 #
-# 1 00 * * * xcat /var/www/xcat.org/backup/cleanup_snapshot_files.sh
+# This script could be executed directly on xcat.org
+# But it is intended to be executed from c910 login node
+# by backup/runcleanup (in xcat2/xcat2.github.io repo)
 #
 
 import sys, os
@@ -10,74 +10,78 @@ import fnmatch
 import time
 
 DAYS_OLD=180
+REMOVED=0
 
-baseDirectory = os.path.dirname(os.path.realpath(__file__))
-fileDirectory = baseDirectory.replace("backup", "files/xcat")
+fileDirectoryList = ["/var/www/xcat.org/files/xcat/xcat-dep","/var/www/xcat.org/files/xcat/xcat-core"]
 
 now = time.time()
 cutoff = now - (int(DAYS_OLD) * 86400)
 
-# Get all the bz2 files 
-for root,dirnames,filenames in os.walk(fileDirectory): 
-    print "Working on directory %s with %s files" %(root, len(filenames)) 
-    if not filenames:
-        continue
+#For each file in the list
+for fileDirectory in fileDirectoryList:
+    # Get all the bz files 
+    for root,dirnames,filenames in os.walk(fileDirectory): 
+        print "Processing directory %s with %s files" %(root, len(filenames)) 
+        if not filenames:
+            continue
 
-    if len(filenames) > 2: 
-        # We want to leave around some files, so only clean up if 
-        # there are more than 2 files in the directory
+        if len(filenames) > 2: 
+            # We want to leave around some files, so only clean up if 
+            # there are more than 2 files in the directory
 
-        symlinks = [] 
-        fresh_time = 0
-        fresh_file = "mg"
-        for filename in fnmatch.filter(filenames, "*snap.tar.bz2"):
-            fullpath = os.path.join(root,filename)
-            # look for the symlinks
-            if os.path.islink(fullpath):
-                real_path = os.readlink(fullpath)
-                real_full_path = os.path.join(root, os.readlink(fullpath))
-                # find the real file name and set them aside 
-                symlinks.append(real_full_path)
+            symlinks = [] 
+            fresh_time = 0
+            fresh_file = "mg"
+            for filename in fnmatch.filter(filenames, "*.bz*"):
+                fullpath = os.path.join(root,filename)
+                # look for the symlinks
+                if os.path.islink(fullpath):
+                    real_path = os.readlink(fullpath)
+                    real_full_path = os.path.join(root, os.readlink(fullpath))
+                    # find the real file name and set them aside 
+                    symlinks.append(real_full_path)
+                    print "    ---> SAVE SYMLINK %s" %(real_full_path)
   
-        # Repeat the loop and look for files with freshest date
-        # We want to not remove such file as it might be the last one in dir
-        # even if older than the DAYS_OLD
-        for filename in fnmatch.filter(filenames, "*.bz2"):
-            fullpath = os.path.join(root,filename)
-            t = os.stat(fullpath)
-            c = t.st_mtime
-            if fresh_time < c:
-                #This file has later timestamp
-                fresh_time = c
-                fresh_file = fullpath
-                # print "    FRESHEST - File %-50s, f=%d" %(filename, fresh_time)
+            # Repeat the loop and look for files with freshest date
+            # We want to not remove such file as it might be the last one in dir
+            # even if older than the DAYS_OLD
+            for filename in fnmatch.filter(filenames, "*.bz*"):
+                fullpath = os.path.join(root,filename)
+                t = os.stat(fullpath)
+                c = t.st_mtime
+                if fresh_time < c:
+                    #This file has later timestamp
+                    fresh_time = c
+                    fresh_file = fullpath
+                    # print "    FRESHEST - File %-50s, f=%d" %(filename, fresh_time)
 
 
-        # Repeat the loop and actually remove the files older than DAYS_OLD 
-        for filename in fnmatch.filter(filenames, "*.bz2"):
-            fullpath = os.path.join(root,filename)
-            if os.path.islink(fullpath):
-                # do not remove symlinks
-                continue
-            if fullpath in symlinks:
-                # do not remove the files pointed to by symlinks
-                continue 
+            # Repeat the loop and actually remove the files older than DAYS_OLD 
+            for filename in fnmatch.filter(filenames, "*.bz*"):
+                fullpath = os.path.join(root,filename)
+                if os.path.islink(fullpath):
+                    # do not remove symlinks
+                    continue
+                if fullpath in symlinks:
+                    # do not remove the files pointed to by symlinks
+                    continue 
          
-            # check the time of the file 
-            t = os.stat(fullpath)
-            c = t.st_mtime
+                # check the time of the file 
+                t = os.stat(fullpath)
+                c = t.st_mtime
 
-            # print "DEBUG - File %s, c=%d,cutoff=%d" %(os.path.basename(fullpath), c, cutoff)
-            if c < cutoff: 
-                # Timestamp on the file is older than the cutoff
-                if fullpath == fresh_file:
-                    # Do not remove the last file in directory. It might be older than cutoff
-                    # but it is the last snapshot of its kind
-                    print "    ---> KEEP, LAST OF ITS KIND %s" %(filename)
+                # print "DEBUG - File %s, c=%d,cutoff=%d" %(os.path.basename(fullpath), c, cutoff)
+                if c < cutoff: 
+                    # Timestamp on the file is older than the cutoff
+                    if fullpath == fresh_file:
+                        # Do not remove the last file in directory. It might be older than cutoff
+                        # but it is the last snapshot of its kind
+                        print "    ---> KEEP, LAST OF ITS KIND %s" %(filename)
+                    else:
+                        print "    ---> REMOVE %s" %(filename)
+                        REMOVED += 1
+                        os.remove(fullpath)
                 else:
-                    print "    ---> REMOVE %s" %(filename)
-                    os.remove(fullpath)
-            else:
-                print "    ---> KEEP, NOT OLD ENOUGH %s" %(filename)
+                    print "    ---> KEEP, NOT OLD ENOUGH %s" %(filename)
 
 print "Removed %d files" %(REMOVED)
