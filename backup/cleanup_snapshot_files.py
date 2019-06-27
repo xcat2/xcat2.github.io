@@ -45,7 +45,7 @@ for fileDirectory in fileDirectoryList:
             symlinks = [] 
             fresh_time = 0
             fresh_file = "mg"
-            for filename in fnmatch.filter(filenames, "*.bz*"):
+            for filename in fnmatch.filter(filenames, "*snap.tar.bz*"):
                 fullpath = os.path.join(root,filename)
                 # look for the symlinks
                 if os.path.islink(fullpath):
@@ -57,7 +57,7 @@ for fileDirectory in fileDirectoryList:
             # Repeat the loop and look for files with freshest date
             # We want to not remove such file as it might be the last one in dir
             # even if older than the DAYS_OLD
-            for filename in fnmatch.filter(filenames, "*.bz*"):
+            for filename in fnmatch.filter(filenames, "*snap.tar.bz*"):
                 fullpath = os.path.join(root,filename)
                 t = os.stat(fullpath)
                 c = t.st_mtime
@@ -69,7 +69,7 @@ for fileDirectory in fileDirectoryList:
 
 
             # Repeat the loop and actually remove the files older than DAYS_OLD 
-            for filename in fnmatch.filter(filenames, "*.bz*"):
+            for filename in fnmatch.filter(filenames, "*snap.tar.bz*"):
                 fullpath = os.path.join(root,filename)
                 if os.path.islink(fullpath):
                     # do not remove symlinks
