@@ -4,6 +4,7 @@
 # But it is intended to be executed from c910 login node
 # by backup/runcleanup (in xcat2/xcat2.github.io repo)
 #
+# Usage: cleanup_snapshot_files.py [--dryrun] [--debug]
 
 import sys, os
 import fnmatch
@@ -11,8 +12,20 @@ import time
 
 DAYS_OLD=180
 REMOVED=0
+DEBUG=0
+DRYRUN=0
 
-fileDirectoryList = ["/var/www/xcat.org/files/xcat/xcat-dep","/var/www/xcat.org/files/xcat/xcat-core"]
+if (len(sys.argv)) > 1:
+    # Some args were passed
+    if "--dryrun" in sys.argv:
+        print "--dryrun passed"
+        DRYRUN=1
+    if "--debug" in sys.argv:
+        print "--debug passed"
+        DEBUG=1
+
+top = "/var/www/xcat.org"
+fileDirectoryList = [top + "/files/xcat/xcat-dep",top + "/files/xcat/xcat-core"]
 
 now = time.time()
 cutoff = now - (int(DAYS_OLD) * 86400)
@@ -40,7 +53,6 @@ for fileDirectory in fileDirectoryList:
                     real_full_path = os.path.join(root, os.readlink(fullpath))
                     # find the real file name and set them aside 
                     symlinks.append(real_full_path)
-                    print "    ---> SAVE SYMLINK %s" %(real_full_path)
   
             # Repeat the loop and look for files with freshest date
             # We want to not remove such file as it might be the last one in dir
@@ -61,9 +73,13 @@ for fileDirectory in fileDirectoryList:
                 fullpath = os.path.join(root,filename)
                 if os.path.islink(fullpath):
                     # do not remove symlinks
+                    if DEBUG:
+                        print "    ---> KEEP, SYMLINK %s" %(fullpath)
                     continue
                 if fullpath in symlinks:
                     # do not remove the files pointed to by symlinks
+                    if DEBUG:
+                        print "    ---> KEEP, SYMLINK SOURCE %s" %(fullpath)
                     continue 
          
                 # check the time of the file 
@@ -76,12 +92,17 @@ for fileDirectory in fileDirectoryList:
                     if fullpath == fresh_file:
                         # Do not remove the last file in directory. It might be older than cutoff
                         # but it is the last snapshot of its kind
-                        print "    ---> KEEP, LAST OF ITS KIND %s" %(filename)
+                        if DEBUG:
+                            print "    ---> KEEP, LAST OF ITS KIND %s" %(filename)
                     else:
-                        print "    ---> REMOVE %s" %(filename)
                         REMOVED += 1
-                        os.remove(fullpath)
+                        if DRYRUN:
+                            print "    ---> DRYRUN REMOVE %s" %(filename)
+                        else:
+                            os.remove(fullpath)
+                            print "    ---> REMOVED %s" %(filename)
                 else:
-                    print "    ---> KEEP, NOT OLD ENOUGH %s" %(filename)
+                    if DEBUG:
+                        print "    ---> KEEP, NOT OLD ENOUGH %s" %(filename)
 
 print "Removed %d files" %(REMOVED)
