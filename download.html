@@ -107,29 +107,28 @@ html,
 
     <div class="container">
         <div class="download_main">
-            <h2>Installing with go-xcat</h2>To easily install xCAT and handle the dependency package, a new script <b>go-xcat</b> is provided.<br>
-            <br>
-            On the target xCAT Management Node, run the following commands to install the latest version of xCAT:<br>
-            <br>
+            <h2>Automatic install using go-xcat</h2>
 
+            To easily install xCAT and automatically handle dependency packages, a script <b><tt>go-xcat</tt></b> is provided.  On the xCAT Management node, run the following commands to install the latest version of xCAT: <br>
+            <br> 
             <div id="code_box">
                 <pre class="codetext">
 wget https://raw.githubusercontent.com/xcat2/xcat-core/master/xCAT-server/share/xcat/tools/go-xcat -O - &gt;/tmp/go-xcat
 chmod +x /tmp/go-xcat
 /tmp/go-xcat
-</pre>
+                </pre>
             </div>
 
             <h2>Download xCAT</h2>
 
-            <p>There are a number of options provided for installing xCAT.</p>
+            <p>There are a number of manual options provided for installing xCAT.</p>
 
             <ol>
-                <li>Download the tar.bz2 packages provided on this download page</li>
+                <li>Download the <tt>tar.bz2</tt> packages provided on this download page</li>
 
                 <li>Configure the public hosted online repositories from your target machine</li>
 
-                <li>Clone the xcat-core project and compile from source (still requires xcat-dep)</li>
+                <li>Clone the xcat-core project and compile from source (still requires downloading <tt>xcat-dep</tt>)</li>
             </ol>
 
             <p>Regardless of the option that is chosen to install xCAT, <b>BOTH</b> <tt>xcat-core</tt> and <tt>xcat-dep</tt> are needed before starting the install.</p><b><a href="#xcat-core">xCAT Core Packages (xcat-core)</a></b> is the main package containing the xCAT software. The following builds are available:
