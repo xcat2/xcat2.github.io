@@ -107,7 +107,7 @@ html,
 
     <div class="container">
         <div class="download_main">
-            <h2>Installing with go-xcat (recommended)</h2>To simplify xCAT installation and its dependency packages, use <b>go-xcat</b> script.<br>
+            <h2>Installing with go-xcat (recommended)</h2>
             <br>
             On the target xCAT Management Node, run the following commands to install the latest stable version of xCAT:<br>
             <br>
@@ -120,19 +120,21 @@ chmod +x /tmp/go-xcat
 </pre>
             </div>
 
-            <h2>Download xCAT</h2>
+            <h2>Manual download and install of xCAT</h2>
 
             <b><a href="#xcat-core">xCAT Core Packages (xcat-core)</a></b> is the main package containing the xCAT software.
-            <b><a href="#xcat-dep">xCAT Dependency Packages (xcat-dep)</a></b> is a tar package that is provided as a convenience for the user and contains dependency packages required by xCAT that are not provided by the operating system.
+            <br>
+            <b><a href="#xcat-dep">xCAT Dependency Packages (xcat-dep)</a></b> is a package that is provided as a convenience for the user and contains dependency packages required by xCAT that are not provided by the operating system.
+            <br>
 
-            <p>There are 2 ways provided for installing xCAT.</p>
+            <p>There are 2 ways provided for downloading and installing xCAT.</p>
 
             <ol>
                 <li>Download the tar.bz2 packages for both <tt>xcat-core</tt> and <tt>xcat-dep</tt> from this download page.</li>
-
-                <li>Configure publicly hosted online repositories for both <tt>xcat-core</tt> and <tt>xcat-dep</tt> on your target machine</li>
-
+                <li>Configure publicly hosted online repositories for both <tt>xcat-core</tt> and <tt>xcat-dep</tt> on your target machine.</li>
             </ol>
+
+            <p>Then follow installation steps for <a href=https://xcat-docs.readthedocs.io/en/stable/guides/install-guides/yum/manual_install.html>Red Hat Enterprise Linux</a> or <a href=https://xcat-docs.readthedocs.io/en/stable/guides/install-guides/zypper/manual_install.html>SUSE Linux Enterprise Server</a> or <a href=https://xcat-docs.readthedocs.io/en/stable/guides/install-guides/apt/manual_install.html>Ubuntu Server LTS</a>
 
         </div><br>
         <br>
@@ -225,7 +227,7 @@ chmod +x /tmp/go-xcat
 
                     <li>Online Repository: 
                         <a href="https://xcat.org/files/xcat/repos/yum/xcat-dep">xcat-dep online repo</a>. 
-                        Select the <b>os/arch</b> of your management node and configure yum/zypper with the provided <tt>xcat-dep.repo</yy> file found in that directory.</li>
+                        Select the <b>os/arch</b> of your management node and configure yum/zypper with the provided <tt>xcat-dep.repo</tt> file found in that directory.</li>
                 </ul>
 
                 <h4>Linux - Debian (Ubuntu) [Select one of the choices below]</h4>
