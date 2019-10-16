@@ -155,9 +155,11 @@ def promote_snap_build():
 
         core_file = "core-rpms-snap.tar.bz2"
         repo_type = "yum"
+        dep_file_prefix = "xcat-dep-20*"
         if 'Ubuntu' in t: 
             core_file = "core-debs-snap.tar.bz2"
             repo_type = "apt"
+            dep_file_prefix = "xcat-dep-ubuntu-20*"
 
         # Do all the error checking first, so we don't have to undo anything... 
         print ". . Pre-verification starting . . . "
@@ -198,6 +200,11 @@ def promote_snap_build():
         cmd = "cp %s %s" %(os.path.realpath(snap_build), target_ga_filename)
         run_command(cmd) 
 
+        # Link xcat-dep-<version> to the file with the latest date
+        dep_path = "%s/xcat/xcat-dep/2.x_%s" %(os.path.realpath(options.TARGET), t)
+        cmd = "cd %s; ls %s | tail -1 | xargs -I {} ln -s {} xcat-dep-%s-%s.tar.bz2; cd -" %(dep_path, dep_file_prefix, major, str.lower(t))
+        run_command(cmd) 
+
         # remove the xcat-core repo
         repo_source_dir = "%s/xcat/repos/%s/%s/core-snap" %(options.TARGET, repo_type, major)
         repo_target_dir = "%s/xcat/repos/%s/%s/xcat-core" %(options.TARGET, repo_type, major)
@@ -218,10 +225,15 @@ def promote_snap_build():
         run_command(cmd)
 
         if "yum" in repo_type:
+            # Modify xcat-core repo file
             repo_file = "%s/xcat-core.repo" %(repo_target_dir)
             cmd = "sed -i s#%s/%s/core-snap#%s/%s/xcat-core#g %s" %(repo_type, major, repo_type, major, repo_file)
             run_command(cmd) 
 
+            # Modify xcat-dep repo files to remove "devel" path
+            cmd = "find %s -type f -name xcat-dep.repo -exec sed -i s#devel/##g {} \;" %(dep_target_dir)
+            run_command(cmd) 
+            
         if options.LINK_LATEST:
             #
             # Promote the yum/apt repos
