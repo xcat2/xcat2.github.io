@@ -548,7 +548,7 @@ span:hover{
     }
     .customer-logos-back-front {
         margin-top:30px;
-        height:270px;
+        height:auto;
         padding-left:4%;
         padding-right:4%;
         width:86%;
@@ -662,7 +662,7 @@ span:hover{
     }
     .customer-logos-back-front {
         margin-top:30px;
-        height:270px;
+        height:auto;
         padding-left:4%;
         padding-right:4%;
         width:86%;
@@ -878,7 +878,7 @@ span:hover{
     }
     .customer-logos-back-front {
         margin-top:30px;
-        height:270px;
+        height:auto;
         padding-left:4%;
         padding-right:4%;
         width:86%;
@@ -1056,7 +1056,7 @@ span:hover{
     }
     .customer-logos-back-front {
         margin-top:30px;
-        height:270px;
+        height:auto;
         padding-left:4%;
         padding-right:4%;
         width:86%;
@@ -1258,7 +1258,7 @@ span:hover{
     }
     .customer-logos-back-front {
         margin-top:30px;
-        height:270px;
+        height:auto;
         width:98%;
         display: inline-block;
     }
