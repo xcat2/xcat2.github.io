@@ -268,7 +268,7 @@ img {
 }
 .customer-logos-back-front {
     margin-top:50px;
-    height:180px;
+    height:auto;
     width:94%;
     justify-content: center;
     display: flex;
