@@ -448,7 +448,7 @@ span:hover{
     height: 175px;
 }
 
-@media only screen and (min-width: 900px) and (max-width: 1230px) {
+@media only screen and (min-width: 900px) and (max-width: 1330px) {
     .min {
         width: 230px;
         height: 190px;
