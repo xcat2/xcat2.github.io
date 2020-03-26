@@ -568,5 +568,6 @@
       intro10.style.display = 'none';
       show.style.display = 'block';
     },400);
+  }
 
 })();
