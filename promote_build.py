@@ -202,7 +202,7 @@ def promote_snap_build():
 
         # Link xcat-dep-<version> to the file with the latest date
         dep_path = "%s/xcat/xcat-dep/2.x_%s" %(os.path.realpath(options.TARGET), t)
-        cmd = "cd %s; ls %s | tail -1 | xargs -I {} ln -s {} xcat-dep-%s-%s.tar.bz2; cd -" %(dep_path, dep_file_prefix, major, str.lower(t))
+        cmd = "cd %s; ls %s | tail -1 | xargs -I {} ln -s {} xcat-dep-%s-%s.tar.bz2; cd -" %(dep_path, dep_file_prefix, minor, str.lower(t))
         run_command(cmd) 
 
         # remove the xcat-core repo
