@@ -171,15 +171,15 @@ chmod +x /tmp/go-xcat
                         <a href="https://xcat.org/files/xcat/xcat-core/2.19.x_Ubuntu/xcat-core-2.19.0-ubuntu.tar.bz2" rel="nofollow">xcat-core-2.19.0-ubuntu.tar.bz2</a></li>
 
                     <li>Public Online Repository:<br>
-                        &nbsp; <i>For x86_64 servers:</i>
+                        &nbsp; The repository serves amd64, ppc64el and riscv64. Import the signing key, and add the line
+                        below to <tt>/etc/apt/sources.list.d/xcat.list</tt>. Replace <tt>&lt;codename&gt;</tt> with
+                        <tt>jammy</tt>, <tt>noble</tt> or <tt>resolute</tt>.
 
                         <div id="code_box">
-                            <pre class="codetext">&nbsp; deb [arch=amd64] https://xcat.org/files/xcat/repos/apt/latest/xcat-core trusty main</pre>
+                            <pre class="codetext">&nbsp; curl -fsSL https://xcat.org/files/xcat/repos/apt/latest/xcat-core/apt.key | gpg --dearmor -o /usr/share/keyrings/xcat-core.gpg && chmod 0644 /usr/share/keyrings/xcat-core.gpg</pre>
                         </div>
-
-                        &nbsp; <i>For ppc64el servers:</i>
                         <div id="code_box">
-                            <pre class="codetext">&nbsp; deb [arch=ppc64el] https://xcat.org/files/xcat/repos/apt/latest/xcat-core trusty main</p>
+                            <pre class="codetext">&nbsp; deb [signed-by=/usr/share/keyrings/xcat-core.gpg] https://xcat.org/files/xcat/repos/apt/latest/xcat-core &lt;codename&gt; main</pre>
                         </div>
                     </li>
                 </ul>
@@ -204,15 +204,15 @@ chmod +x /tmp/go-xcat
                         <a href="https://xcat.org/files/xcat/xcat-core/devel/Ubuntu/core-snap/core-debs-snap.tar.bz2" rel="nofollow">core-debs-snap.tar.bz2</a></li>
 
                     <li>Public Online Development Repository:<br>
-                        &nbsp; <i>For x86_64 servers:</i>
+                        &nbsp; The repository serves amd64, ppc64el and riscv64. Import the signing key, and add the line
+                        below to <tt>/etc/apt/sources.list.d/xcat.list</tt>. Replace <tt>&lt;codename&gt;</tt> with
+                        <tt>jammy</tt>, <tt>noble</tt> or <tt>resolute</tt>.
 
                         <div id="code_box">
-                            <pre class="codetext">&nbsp; deb [arch=amd64] https://xcat.org/files/xcat/repos/apt/devel/core-snap trusty main</p>
+                            <pre class="codetext">&nbsp; curl -fsSL https://xcat.org/files/xcat/repos/apt/devel/core-snap/apt.key | gpg --dearmor -o /usr/share/keyrings/xcat-core.gpg && chmod 0644 /usr/share/keyrings/xcat-core.gpg</pre>
                         </div>
-
-                        &nbsp; <i>For ppc64el servers:</i>
                         <div id="code_box">
-                            <pre class="codetext">&nbsp; deb [arch=ppc64el] https://xcat.org/files/xcat/repos/apt/devel/core-snap trusty main</p>
+                            <pre class="codetext">&nbsp; deb [signed-by=/usr/share/keyrings/xcat-core.gpg] https://xcat.org/files/xcat/repos/apt/devel/core-snap &lt;codename&gt; main</pre>
                         </div>
                     </li>
                 </ul>
@@ -250,15 +250,15 @@ chmod +x /tmp/go-xcat
                         Choose the <tt>tar.bz2</tt> file that matches the version number of <tt>xcat-core</tt> package.</li>
 
                     <li>Online Repository:<br>
-                        &nbsp; <i>For x86_64 servers:</i>
+                        &nbsp; The repository serves amd64, ppc64el and riscv64. Import the signing key, and add the line
+                        below to <tt>/etc/apt/sources.list.d/xcat.list</tt>. Replace <tt>&lt;codename&gt;</tt> with
+                        <tt>jammy</tt>, <tt>noble</tt> or <tt>resolute</tt>.
 
                         <div id="code_box">
-                            <pre class="codetext">&nbsp; deb [arch=amd64] https://xcat.org/files/xcat/repos/apt/xcat-dep trusty main</pre>
+                            <pre class="codetext">&nbsp; curl -fsSL https://xcat.org/files/xcat/repos/apt/latest/xcat-dep/apt.key | gpg --dearmor -o /usr/share/keyrings/xcat-dep.gpg && chmod 0644 /usr/share/keyrings/xcat-dep.gpg</pre>
                         </div>
-
-                        &nbsp; <i>For ppc64el servers:</i>
                         <div id="code_box">
-                            <pre class="codetext">&nbsp; deb [arch=ppc64el] https://xcat.org/files/xcat/repos/apt/xcat-dep trusty main</pre>
+                            <pre class="codetext">&nbsp; deb [signed-by=/usr/share/keyrings/xcat-dep.gpg] https://xcat.org/files/xcat/repos/apt/latest/xcat-dep &lt;codename&gt; main</pre>
                         </div>
                     </li>
                 </ul>
@@ -284,15 +284,15 @@ chmod +x /tmp/go-xcat
                         Choose the file with the latest snapshot date.</li>
 
                     <li>Online Repository:<br>
-                        &nbsp; <i>For x86_64 servers:</i>
+                        &nbsp; The repository serves amd64, ppc64el and riscv64. Import the signing key, and add the line
+                        below to <tt>/etc/apt/sources.list.d/xcat.list</tt>. Replace <tt>&lt;codename&gt;</tt> with
+                        <tt>jammy</tt>, <tt>noble</tt> or <tt>resolute</tt>.
 
                         <div id="code_box">
-                            <pre class="codetext">&nbsp; deb [arch=amd64] https://xcat.org/files/xcat/repos/apt/devel/xcat-dep trusty main</pre>
+                            <pre class="codetext">&nbsp; curl -fsSL https://xcat.org/files/xcat/repos/apt/devel/xcat-dep/apt.key | gpg --dearmor -o /usr/share/keyrings/xcat-dep.gpg && chmod 0644 /usr/share/keyrings/xcat-dep.gpg</pre>
                         </div>
-
-                        &nbsp; <i>For ppc64el servers:</i>
                         <div id="code_box">
-                            <pre class="codetext">&nbsp; deb [arch=ppc64el] https://xcat.org/files/xcat/repos/apt/devel/xcat-dep trusty main</pre>
+                            <pre class="codetext">&nbsp; deb [signed-by=/usr/share/keyrings/xcat-dep.gpg] https://xcat.org/files/xcat/repos/apt/devel/xcat-dep &lt;codename&gt; main</pre>
                         </div>
                     </li>
                 </ul>
